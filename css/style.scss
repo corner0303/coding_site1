@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+/*===============================================
+# mixins
+=================================================*/
+
+//マップ型変数breakpointsを定義
+$breakpoints: ("sm": "screen and (max-width: 375px)","tab": "screen and (max-width: 768px)", "pc": "screen and (min-width: 769px)");
+
+//メディアクエリ用のmixinを定義。デフォ値はmd
+@mixin mq($breakpoint: pc) {
+    //map-get(マップ型変数, キー)で値を取得
+    @media #{map-get($breakpoints, $breakpoint)} {
+        //この中をカスタムできる
+        @content;
+    }
+}
+
+/*===============================================
+# color
+=================================================*/
+$primary-color: #3EA1D1;
+$text-color-main: #000;
+$text-color-sub: #fff;
+$text-color-date:#CECECE;
+$bg-main:#fff;
+$bg-sub:#F0F0F0;
+$hamburger-bg:rgba(34,34,34,.6);
+$border-col1:#707070;
+$border-col2:#525252;
+$footer-bg:#525252;
+
+/*===============================================
+# comonn -全体に共通するスタイル
+=================================================*/
+
+@include mq("sm") {
+    .is-tab{
+        display: none;
+    }
+
+    .is-pc {
+        display: none;
+    } //pcの時だけ表示 hiddenの逆
+}
+
+@include mq("tab") {
+    .is-sm {
+        display: none;
+    } //spの時だけ表示 hiddenの逆
+
+    .is-pc {
+        display: none;
+    } //pcの時だけ表示 hiddenの逆
+}
+
+@include mq("pc") {
+    .is-sm {
+        display: none;
+    } //spの時だけ表示 hiddenの逆
+    .is-tab{
+        display: none;
+    }
+}
+
+
+body {
+    font-size: 16px;
+    color: $text-color-main;
+    font-family: "ヒラギノ明朝 ProN" , serif;
+    line-height: 1.6875;
+}
+
+img {
+    width: 100%;
+}
+
+.section-inner {
+    max-width: 1180px;
+    width: 100%;
+    box-sizing: border-box;
+    @include mq(pc) {
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+
+    @include mq(tab) {
+        padding-left: 30px;
+    }
+
+    @include mq(sm) {
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+}

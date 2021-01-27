@@ -1,0 +1,75 @@
+@charset "UTF-8";
+/*===============================================
+# mixins
+=================================================*/
+/*===============================================
+# color
+=================================================*/
+/*===============================================
+# comonn -全体に共通するスタイル
+=================================================*/
+@media screen and (max-width: 375px) {
+  .is-tab {
+    display: none;
+  }
+  .is-pc {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .is-sm {
+    display: none;
+  }
+  .is-pc {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .is-sm {
+    display: none;
+  }
+  .is-tab {
+    display: none;
+  }
+}
+
+body {
+  font-size: 16px;
+  color: #000;
+  font-family: "ヒラギノ明朝 ProN" , serif;
+  line-height: 1.6875;
+}
+
+img {
+  width: 100%;
+}
+
+.section-inner {
+  max-width: 1180px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@media screen and (min-width: 769px) {
+  .section-inner {
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .section-inner {
+    padding-left: 30px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .section-inner {
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
