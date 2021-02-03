@@ -497,6 +497,7 @@ img {
         margin-top: 30px;
         font-family: 'Noto Sans JP', sans-serif;
         font-size: 14px;
+
         @include mq(pc) {
             min-height: 152px;
         }
@@ -707,17 +708,21 @@ img {
 .contact-home-body {
     margin-right: 80px;
     width: 100%;
+
     @include mq(pc) {
         max-width: 440px;
-        
     }
+
+
     @include mq(tab) {
         margin-top: 30px;
         max-width: 510px;
     }
-    @include mq(sm) {
-        
-    }
+
+
+    @include mq(sm) {}
+
+
     &__text {
         font-size: 14px;
         margin-top: 30px;
@@ -728,17 +733,354 @@ img {
 /*===============================================
 # footer
 ================================================*/
-.footer{
+.footer {
     background-color: $footer-bg;
     height: 50px;
     line-height: 50px;
     text-align: center;
 }
 
-.copyright{
+.copyright {
     font-family: Montserrat Medium;
     font-size: 8px;
     font-weight: normal;
     letter-spacing: .015em;
     color: $text-color-sub;
+}
+
+/*===============================================
+# about.html
+================================================*/
+
+.top-page {
+    position: relative;
+
+    @include mq(pc) {
+        background: linear-gradient(to right, $bg1 0%, $bg1 50%, $bg3 50%, $bg3 100%);
+        height: 464px;
+    }
+
+
+    @include mq(tab) {
+        background: linear-gradient(to right, $bg1 0%, $bg1 26.8%, $bg3 26.8%, $bg3 100%);
+        height: 615px;
+    }
+
+
+    @include mq(sm) {
+        height: 449px;
+    }
+}
+
+.top-page-bg {
+    position: relative;
+
+    @include mq(pc) {
+        max-width: 1100px;
+        background: url(../img/about-top-page-big.png) top center;
+        height: 387px;
+    }
+
+
+    @include mq(tab) {
+        max-width: 587px;
+        height: 529px;
+        background: url(../img/about-top-page-sm.png) top center;
+    }
+
+
+    @include mq(sm) {
+        max-width: 287px;
+        height: 387px;
+    }
+
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: inherit;
+        height: inherit;
+        background: rgba(0, 0, 0, 0.34);
+    }
+}
+
+.top-page-text {
+    display: block;
+    position: absolute;
+    color: $text-color-sub;
+
+    @include mq(pc) {
+        top: 156px;
+        right: 170px;
+    }
+
+
+    @include mq(tab) {
+        top: 220px;
+        right: 98px;
+        margin-left: 10px;
+    }
+
+
+    @include mq(sm) {
+        top: 149px;
+        right: 29px;
+    }
+
+
+    &__en-ttl {
+        font-family: $eng-font;
+        letter-spacing: 0.063em;
+
+        @include mq(pc) {
+            font-size: 72px;
+            line-height: 1.1944;
+        }
+
+
+        @include mq(tab) {
+            font-size: 52px;
+        }
+    }
+
+    &__ja-ttl {
+        letter-spacing: 0.005em;
+
+        @include mq(pc) {
+            font-size: 18px;
+        }
+
+
+        @include mq(tab) {
+            font-size: 16px;
+        }
+    }
+}
+
+/*===============================================
+# vision
+================================================*/
+.vision {
+    margin-top: 20px;
+}
+
+.vision-body {
+    max-width: 415px;
+    margin: 0 auto;
+
+    &__subttl {
+        font-size: 24px;
+        margin-top: 25px;
+        letter-spacing: .005em;
+    }
+
+    &__text {
+        font-size: 14px;
+        margin-top: 32px;
+        line-height: 2;
+    }
+}
+
+/*===============================================
+# ceo
+================================================*/
+.ceo {
+    width: 100%;
+    position: relative;
+
+    @include mq(pc) {
+        max-width: 1100px;
+        height: 1038px;
+        margin: 0 auto;
+        margin-top: 120px;
+    }
+
+
+    @include mq(tab) {
+        height: 903px;
+        margin-left: 15px;
+    }
+
+
+    @include mq(sm) {
+        margin-left: 0;
+    }
+}
+
+.ceo-icon {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    top: -10px;
+
+    @include mq(pc) {
+        // left: 170px;
+        max-width: 420px;
+        height: 282px;
+    }
+
+
+    @include mq(tab) {
+        left: 30px;
+        max-width: 320px;
+    }
+
+
+    @include mq(sm) {
+        left: 0;
+        top: 0;
+    }
+}
+
+.ceo-body {
+    position: absolute;
+    width: 100%;
+    background-color: $bg2;
+
+    @include mq(pc) {
+        width: 770px;
+        top: 144px;
+        right: 0px;
+        padding: 120px 185px 90px 185px;
+    }
+
+
+    @include mq(tab) {
+        top: 131px;
+        right: 30px;
+        max-width: 494px;
+        padding: 109px 40px 78px;
+    }
+
+
+    @include mq(sm) {
+        position: static;
+        margin: 0 auto;
+        margin-top: 69px;
+        padding: 126px 29px 80px 28px;
+    }
+
+
+    &__text {
+        margin-top: 30px;
+
+        @include mq(pc) {
+            line-height: 2;
+        }
+
+
+        @include mq(tab) {
+            line-height: 1.75;
+        }
+
+
+        @include mq(sm) {
+            font-size: 14px;
+            line-height: 2;
+
+            // display: inline-block;
+            height: 525px;
+        }
+    }
+}
+
+/*===============================================
+# company
+================================================*/
+
+.company-body {
+    margin-top: 30px;
+    border-top: 1px $border-color1 solid;
+}
+
+.history {
+    @include mq(pc) {
+        padding-left: 30px;
+    }
+
+
+    @include mq(tab) {
+        padding-left: 30px;
+    }
+
+
+    @include mq(sm) {
+        padding-left: 0;
+    }
+}
+
+.history-item {
+    max-width: 800px;
+    height: 56px;
+    width: 100%;
+    border-bottom: 1px $border-color1 solid;
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+
+    @include mq(pc) {}
+
+
+    @include mq(tab) {}
+
+
+    @include mq(sm) {
+        height: 60px;
+    }
+
+
+    &__ttl {
+        display: inline-block;
+        flex: 0 0 144px;
+        letter-spacing: 0.004em;
+        line-height: 1;
+
+        @include mq(pc) {
+            font-weight: bold;
+        }
+
+
+        @include mq(tab) {
+            font-weight: bold;
+        }
+
+
+        @include mq(sm) {
+            flex: 0 0 163px;
+            font-weight: normal;
+            font-size: 14px;
+        }
+    }
+
+    &__description {
+        @include mq(sm) {
+            font-size: 14px;
+        }
+    }
+}
+
+.google-map {
+    position: relative;
+    width: 100%;
+    margin-top: 40px;
+    @include mq(pc) {
+        padding-top: 32.727%;
+    }
+    @include mq(tab) {
+        padding-top: 32.485%;
+    }
+    @include mq(sm) {
+        padding-top: 136.231%;
+    }
+    &__iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 }

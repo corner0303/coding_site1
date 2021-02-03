@@ -4,7 +4,7 @@
 1/27作成開始
 1/28 index.html(HOME)の枠組み構成
 2/1 index.html完成
-
+2/4 about.htmlの完成
 
 
 ----下は予定----
