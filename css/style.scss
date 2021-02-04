@@ -77,7 +77,11 @@ body {
     color: $text-color-main;
     font-family: $ja-font;
     line-height: 1.6875;
+}
+
+.wrapper{
     overflow-x: hidden;
+    position: relative;
 }
 
 img {
@@ -264,7 +268,6 @@ img {
     right: -520px;
     transition: all .3s;
     background-color: $bg3;
-
     &--open {
         transform: translateX(-520px);
     }

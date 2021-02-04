@@ -40,7 +40,11 @@ body {
   color: #000;
   font-family: YuGothic, "Yu Gothic", Verdana, Meiryo, sans-serif;
   line-height: 1.6875;
+}
+
+.wrapper {
   overflow-x: hidden;
+  position: relative;
 }
 
 img {
