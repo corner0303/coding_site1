@@ -16,7 +16,10 @@ $breakpoints: ("sm": "screen and (max-width: 376px)", "tab": "screen and (max-wi
     }
 }
 
-$ja-font: YuGothic, "Yu Gothic", Verdana, Meiryo, sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
+
+$ja-font2: YuGothic, "Yu Gothic", Verdana, Meiryo, sans-serif;
+$ja-font1: "Noto Sans JP", YuGothic, "Yu Gothic", Verdana, Meiryo, sans-serif;
 $eng-font: "Montserrat", serif;
 
 /*===============================================
@@ -34,6 +37,7 @@ $about-bg: rgba(255, 255, 255, 0.95);
 $footer-bg: #525252;
 $hamburger-bg: rgba(34, 34, 34, 0.6);
 $border-color1: #dddddd;
+$form-color: #333333;
 $footer-bg: #525252;
 
 /*===============================================
@@ -75,11 +79,11 @@ $footer-bg: #525252;
 body {
     font-size: 16px;
     color: $text-color-main;
-    font-family: $ja-font;
+    font-family: $ja-font1;
     line-height: 1.6875;
 }
 
-.wrapper{
+.wrapper {
     overflow-x: hidden;
     position: relative;
 }
@@ -133,24 +137,43 @@ img {
 .btn {
     width: 160px;
     height: 36px;
-    background-color: $btn-bg;
     margin-top: 30px;
     text-align: center;
-    cursor: pointer;
-
+    
+    $this : &;
+    
     &__link {
+        display: inline-block;
+        width: inherit;
+        height: inherit;
+        background-color: $btn-bg;
         font-family: $eng-font;
         font-size: 11px;
         font-weight: normal;
         color: $text-color-sub;
         letter-spacing: 0.015em;
         line-height: 36px;
+        cursor: pointer;
+
+        &--form {
+            font-family: $ja-font1;
+            font-weight: bold;
+            transition: all .3s;
+            &:disabled{
+                background:#A8A8A8;
+                cursor: auto;
+            }
+        }
     }
 
     &--topics {
         @include mq(pc) {
             margin-left: auto;
         }
+    }
+
+    &--form {
+        margin: 40px auto 0;
     }
 }
 
@@ -168,7 +191,7 @@ img {
     // background-color: $bg3;
     display: flex;
     position: absolute;
-    z-index: 1;
+    z-index: 5;
 }
 
 .header-logo {
@@ -204,7 +227,7 @@ img {
     align-items: center;
     cursor: pointer;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 
     @include mq(pc) {
         margin-top: 36px;
@@ -262,14 +285,29 @@ img {
 
 .gnav {
     // display: none;
-    width: 520px;
     height: 100vh;
     position: absolute;
+    z-index: 10;
     right: -520px;
     transition: all .3s;
     background-color: $bg3;
+
     &--open {
         transform: translateX(-520px);
+    }
+
+    @include mq(pc) {
+        width: 520px;
+    }
+
+
+    @include mq(tab) {
+        width: 520px;
+    }
+
+
+    @include mq(sm) {
+        width: 280px;
     }
 }
 
@@ -299,6 +337,21 @@ img {
     font-size: 20px;
     color: $text-color-sub;
     font-family: $eng-font;
+}
+
+.hamburger-bg {
+    display: none;
+
+    &--open {
+        display: block;
+        position: fixed;
+        z-index: 3;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(34, 34, 34, 0.6);
+    }
 }
 
 /*===============================================
@@ -1070,20 +1123,419 @@ img {
     position: relative;
     width: 100%;
     margin-top: 40px;
+
     @include mq(pc) {
         padding-top: 32.727%;
     }
+
+
     @include mq(tab) {
         padding-top: 32.485%;
     }
+
+
     @include mq(sm) {
         padding-top: 136.231%;
     }
+
+
     &__iframe {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+    }
+}
+
+/*===============================================
+# contact.html
+================================================*/
+/*===============================================
+# contact
+================================================*/
+.contact {
+    @include mq(pc) {
+        margin: 120px 0;
+    }
+
+
+    @include mq(tab) {
+        margin: 135px 0 197px 0;
+    }
+
+
+    @include mq(sm) {
+        margin: 80px 0;
+    }
+}
+
+.contact-body {
+    margin: 0 auto;
+
+    @include mq(pc) {
+        max-width: 700px;
+        width: 100%;
+    }
+
+
+    @include mq(tab) {
+        padding: 0 50px;
+    }
+
+
+    @include mq(sm) {
+        padding: 0 15px;
+    }
+
+
+    &__text {
+        display: inline-block;
+
+        @include mq(pc) {
+            line-height: 1.5;
+            min-height: 53px;
+            margin-bottom: 10px;
+        }
+
+
+        @include mq(tab) {
+            min-height: 43px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+
+        @include mq(sm) {
+            min-height: 90px;
+            line-height: 1.7142;
+            font-size: 11.9px;
+            margin-bottom: 20px;
+            font-family: $ja-font2;
+        }
+    }
+}
+
+.form-item {
+    @include mq(pc) {
+        margin-top: 46px;
+    }
+
+
+    @include mq(tab) {
+        margin-top: 40px;
+    }
+
+
+    @include mq(sm) {}
+
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &__term {
+        margin-bottom: 10px;
+
+        &--part {
+            display: inline-block;
+            width: 34px;
+            height: 18px;
+            line-height: 18px;
+            text-align: center;
+            background-color: $form-color;
+            color: $text-color-sub;
+            font-size: 12px;
+            letter-spacing: .004em;
+            margin-left: 20px;
+        }
+
+        &--privacy {
+            font-family: $eng-font;
+            letter-spacing: .004em;
+        }
+    }
+}
+
+.form-item-text, .form-item-email, .form-item-tell {
+    &__input {
+        width: 100%;
+        height: 41px;
+        border: 1px solid $form-color;
+        padding-left: .8em;
+    }
+
+    &__error-blank {
+        display: none;
+        position: relative;
+        // display: block;
+        width: 200px;
+        padding: 2px 10px;
+        color: $text-color-sub;
+        background-color: $form-color;
+        font-weight: bold;
+        font-size: 14px;
+        margin-top: 10px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            top: -10px;
+            border-style: solid;
+            border-width: 0 15px 15px 15px;
+            border-color: transparent transparent $form-color transparent;
+            line-height: 0px;
+            _border-color: #000000 #000000 $form-color #000000;
+            _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+        }
+    }
+}
+
+.form-item-radio {
+    display: flex;
+    max-width: 423px;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: 10px;
+
+    @include mq(pc) {}
+
+
+    @include mq(tab) {}
+
+
+    @include mq(sm) {
+        flex-direction: column;
+    }
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+
+    $this: &;
+
+    @include mq(sm) {
+        margin-top: 14px;
+
+        &:first-child {
+            margin-top: 3px;
+        }
+    }
+
+
+    &__input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+
+        &:checked + #{$this}__part {
+            &::after {
+                content: "";
+                margin: 3px;
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                background: $form-color;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    &__part {
+        display: inline-flex;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #333333;
+        border-radius: 50%;
+        vertical-align: sub;
+        cursor: pointer;
+    }
+
+    &__text {
+        font-family: $ja-font2;
+        margin: 0 10px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    cursor: pointer;
+}
+
+.form-item-content {
+    &__input {
+        max-width: 700px;
+        width: 100%;
+        height: 212px;
+        resize: vertical;
+        padding: .8em;
+    }
+
+    &__error-blank {
+        display: none;
+        position: relative;
+        // display: block;
+        width: 200px;
+        padding: 2px 10px;
+        color: $text-color-sub;
+        background-color: $form-color;
+        font-weight: bold;
+        font-size: 14px;
+        margin-top: 10px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            top: -10px;
+            border-style: solid;
+            border-width: 0 15px 15px 15px;
+            border-color: transparent transparent $form-color transparent;
+            line-height: 0px;
+            _border-color: #000000 #000000 $form-color #000000;
+            _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+        }
+    }
+}
+
+.form-item-check {
+    margin-top: 42px;
+
+    @include mq(pc) {
+        text-align: center;
+    }
+
+
+    @include mq(tab) {
+        text-align: center;
+    }
+
+
+    @include mq(sm) {
+        text-align: left;
+        display: inline-block;
+    }
+
+
+    &__text {
+        @include mq(pc) {}
+
+
+        @include mq(tab) {}
+
+
+        @include mq(sm) {
+            font-size: 12px;
+            text-align: left;
+            font-family: $ja-font2;
+        }
+    }
+
+    &__error-blank {
+        display: none;
+        position: relative;
+        // display: block;
+        width: 200px;
+        padding: 2px 10px;
+        color: $text-color-sub;
+        background-color: $form-color;
+        font-weight: bold;
+        font-size: 14px;
+        margin: 10px auto 0 auto;
+
+        &::before {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            top: -10px;
+            border-style: solid;
+            border-width: 0 15px 15px 15px;
+            border-color: transparent transparent $form-color transparent;
+            line-height: 0px;
+            _border-color: #000000 #000000 $form-color #000000;
+            _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+        }
+    }
+}
+
+.privacy-content {
+    display: block;
+    max-width: 700px;
+    width: 100%;
+    overflow-y: scroll;
+    padding: 10px;
+    border: 1px solid $form-color;
+    
+    @include mq(pc) {
+        height: 252px;
+        line-height: 1.5;
+    }
+
+
+    @include mq(tab) {
+        height: 226px;
+        line-height: 1.5;
+        font-family: $ja-font2;
+    }
+
+
+    @include mq(sm) {
+        font-size: 14px;
+        line-height: 1.714;
+    }
+}
+
+.form-item-check{
+    position: relative;
+    cursor: pointer;
+    $this : &;
+    &__input{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        visibility: hidden;
+        &:checked + #{$this}__part{
+            background: $form-color;
+            &::after{
+                transform: rotate(45deg);
+                border-color: $text-color-sub;
+            }
+        }
+    }
+    &__part{
+        display: inline-flex;
+        justify-self: center;
+        align-items: center;
+        width: 20px;
+        height:20px;
+        border: 1px solid $form-color;
+        transition: all .3s;
+        &::after{
+            content: "";
+            display: inline-block;
+            width: 3px;
+            height: 10px;
+            margin-left: 6px;
+            border:3px solid transparent;
+            border-top: transparent;
+            border-left: transparent;
+            transition: all .3s .1s;
+        }
+    }
+    &__text{
+        margin-left: 10px;
+        cursor: pointer;
     }
 }
