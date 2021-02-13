@@ -899,12 +899,12 @@ img {
 
 
     @include mq(tab) {
-        background: linear-gradient(to right, $bg1 0%, $bg1 26.8%, $bg3 26.8%, $bg3 100%);
+        background: linear-gradient(to right, $bg1 0%, $bg1 50%, $bg3 50%, $bg3 100%);
         height: 615px;
         transition: all .3s;
 
         &[data-dark='dark'] {
-            background: linear-gradient(to right, $dark-bg2 0%, $dark-bg2 26.8%, $dark-bg 26.8%, $dark-bg 100%);
+            background: linear-gradient(to right, $dark-bg2 0%, $dark-bg2 50%, $dark-bg 50%, $dark-bg 100%);
         }
     }
 
@@ -917,9 +917,29 @@ img {
 .top-page-bg {
     position: relative;
 
+    &--about{
+        @include mq(pc) {
+            background: url(../img/about-top-page-big.png) center 45% / cover;
+            
+        }
+        @include mq(tab) {
+            
+            background: url(../img/about-top-page-sm.png) center 45% / cover;
+        }
+    }
+    
+    &--contact{
+        @include mq(pc) {
+            background: url(../img/contact-top-page-big.png) center 45% / cover;
+            
+        }
+        @include mq(tab) {
+            
+            background: url(../img/contact-top-page-sm.png) center 45%;
+        }
+    }
     @include mq(pc) {
         max-width: 1100px;
-        background: url(../img/about-top-page-big.png) top center;
         height: 387px;
     }
 
@@ -927,7 +947,6 @@ img {
     @include mq(tab) {
         max-width: 587px;
         height: 529px;
-        background: url(../img/about-top-page-sm.png) top center;
     }
 
 
@@ -955,24 +974,46 @@ img {
     position: absolute;
     color: $text-color-sub;
 
-    @include mq(pc) {
-        top: 156px;
-        right: 170px;
+    &--about{
+        @include mq(pc) {
+            top: 156px;
+            right: 170px;
+        }
+    
+    
+        @include mq(tab) {
+            top: 220px;
+            right: 98px;
+            margin-left: 10px;
+        }
+    
+    
+        @include mq(sm) {
+            top: 149px;
+            right: 29px;
+        }
     }
-
-
-    @include mq(tab) {
-        top: 220px;
-        right: 98px;
-        margin-left: 10px;
+    
+    &--contact{
+        @include mq(pc) {
+            top: 156px;
+            right: 150px;
+        }
+    
+    
+        @include mq(tab) {
+            top: 132px;
+            right: 50px;
+            margin-left: 10px;
+        }
+    
+    
+        @include mq(sm) {
+            top: 129px;
+            right: 21px;
+        }
+        
     }
-
-
-    @include mq(sm) {
-        top: 149px;
-        right: 29px;
-    }
-
 
     &__en-ttl {
         font-family: $eng-font;

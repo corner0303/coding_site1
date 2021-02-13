@@ -925,15 +925,15 @@ img {
 
 @media screen and (max-width: 768px) {
   .top-page {
-    background: -webkit-gradient(linear, left top, right top, from(#fff), color-stop(26.8%, #fff), color-stop(26.8%, #222222), to(#222222));
-    background: linear-gradient(to right, #fff 0%, #fff 26.8%, #222222 26.8%, #222222 100%);
+    background: -webkit-gradient(linear, left top, right top, from(#fff), color-stop(50%, #fff), color-stop(50%, #222222), to(#222222));
+    background: linear-gradient(to right, #fff 0%, #fff 50%, #222222 50%, #222222 100%);
     height: 615px;
     -webkit-transition: all .3s;
     transition: all .3s;
   }
   .top-page[data-dark='dark'] {
-    background: -webkit-gradient(linear, left top, right top, from(#525252), color-stop(26.8%, #525252), color-stop(26.8%, #121212), to(#121212));
-    background: linear-gradient(to right, #525252 0%, #525252 26.8%, #121212 26.8%, #121212 100%);
+    background: -webkit-gradient(linear, left top, right top, from(#525252), color-stop(50%, #525252), color-stop(50%, #121212), to(#121212));
+    background: linear-gradient(to right, #525252 0%, #525252 50%, #121212 50%, #121212 100%);
   }
 }
 
@@ -948,9 +948,32 @@ img {
 }
 
 @media screen and (min-width: 769px) {
+  .top-page-bg--about {
+    background: url(../img/about-top-page-big.png) center 45%/cover;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top-page-bg--about {
+    background: url(../img/about-top-page-sm.png) center 45%/cover;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .top-page-bg--contact {
+    background: url(../img/contact-top-page-big.png) center 45%/cover;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top-page-bg--contact {
+    background: url(../img/contact-top-page-sm.png) center 45%;
+  }
+}
+
+@media screen and (min-width: 769px) {
   .top-page-bg {
     max-width: 1100px;
-    background: url(../img/about-top-page-big.png) top center;
     height: 387px;
   }
 }
@@ -959,7 +982,6 @@ img {
   .top-page-bg {
     max-width: 587px;
     height: 529px;
-    background: url(../img/about-top-page-sm.png) top center;
   }
 }
 
@@ -989,14 +1011,14 @@ img {
 }
 
 @media screen and (min-width: 769px) {
-  .top-page-text {
+  .top-page-text--about {
     top: 156px;
     right: 170px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .top-page-text {
+  .top-page-text--about {
     top: 220px;
     right: 98px;
     margin-left: 10px;
@@ -1004,9 +1026,31 @@ img {
 }
 
 @media screen and (max-width: 376px) {
-  .top-page-text {
+  .top-page-text--about {
     top: 149px;
     right: 29px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .top-page-text--contact {
+    top: 156px;
+    right: 150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top-page-text--contact {
+    top: 132px;
+    right: 50px;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .top-page-text--contact {
+    top: 129px;
+    right: 21px;
   }
 }
 
