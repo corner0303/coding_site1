@@ -64,7 +64,7 @@
   <title>DIGSMILE</title>
 </head>
 
-<body>
+<body data-dark="no">
   <div class="wrapper">
     <div class="hamburger-bg" id="hamburger-bg"></div>
 
@@ -126,6 +126,11 @@
           </li>
           <!-- /.gnav_list -->
         </ul>
+        <div class="brightness-change" for="btn-mode">
+          <span class="brightness-change__text">ダークモード</span>
+          <input id="btn-mode" type="checkbox" class="brightness-change__btn">
+          <label for="btn-mode" class="brightness-change__part"></label>
+        </div>
       </nav>
       <!-- /.gnav -->
       <div class="gnav-open-bg"></div>
@@ -226,7 +231,7 @@
             </div>
             <!-- /.form-item -->
             <div class="form-item">
-              <dt class="form-item__term form-item__term--privacy">PRIVACY POLICY</dt>
+              <dt class="form-item__term form-item__term--privacy" data-dark="">PRIVACY POLICY</dt>
               <dd class="form-item-privacy">
                 <p class="privacy-content">
                   個人情報保護方針<br>
@@ -269,7 +274,7 @@
           </dl>
           <!-- /.form-list -->
           <div class="btn btn--form">
-            <button type="submit" form="js-form" class="btn__link btn__link--form" id="contact-btn" disabled>送信</button> <!-- /.btn__link -->
+            <button type="submit" form="js-form" class="btn__link btn__link--form" id="contact-btn" disabled>送信不可</button> <!-- /.btn__link -->
           </div>
           <!-- /.btn -->
       </div>
@@ -279,6 +284,7 @@
   <!-- /.contact-body -->
   </section>
   <!-- /.contact -->
+ 
   <footer class="footer">
     <span class="copyright" lang="en">©2018 DIGSMILE INC.</span>
   </footer>
@@ -296,6 +302,7 @@
   <script src="./js/slick.js"></script>
   <script src="./js/slick.min.js"></script>
   <script src="./js/script.js"></script>
+  <script src="./js/dark.js"></script>
 </body>
 
 </html>
