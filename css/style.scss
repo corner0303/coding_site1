@@ -102,6 +102,12 @@ body {
 .wrapper {
     overflow-x: hidden;
     position: relative;
+    height: inherit;
+}
+
+.wrapper-on{
+    overflow-y: hidden;
+    height: 100vh;
 }
 
 img {
@@ -993,7 +999,7 @@ img {
             right: 29px;
         }
     }
-    
+
     &--contact{
         @include mq(pc) {
             top: 156px;

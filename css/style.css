@@ -53,6 +53,12 @@ body[data-dark='dark'] {
 .wrapper {
   overflow-x: hidden;
   position: relative;
+  height: inherit;
+}
+
+.wrapper-on {
+  overflow-y: hidden;
+  height: 100vh;
 }
 
 img {

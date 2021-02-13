@@ -4,6 +4,7 @@ $("#hamburger-link").click(function () {
   $("#line2").toggleClass("hamburger-icon__part--open2")
   $("#line3").toggleClass("hamburger-icon__part--open3")
   $("#hamburger-bg").toggleClass("hamburger-bg--open")
+  $(".wrapper").toggleClass("wrapper-on")
 })
 
 $("#hamburger-bg").click(function () {
@@ -12,7 +13,7 @@ $("#hamburger-bg").click(function () {
   $("#line2").removeClass("hamburger-icon__part--open2")
   $("#line3").removeClass("hamburger-icon__part--open3")
   $("#hamburger-bg").removeClass("hamburger-bg--open")
-
+  $(".wrapper").removeClass("wrapper-on")
 })
 
 $(".radio-container").click(function () {
