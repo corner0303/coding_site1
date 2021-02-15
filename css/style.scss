@@ -93,6 +93,7 @@ body {
     font-family: $ja-font1;
     line-height: 1.6875;
     transition: all .3s;
+
     &[data-dark='dark'] {
         background: $dark-bg;
         color: $text-color-sub;
@@ -105,7 +106,7 @@ body {
     height: inherit;
 }
 
-.wrapper-on{
+.wrapper-on {
     overflow-y: hidden;
     height: 100vh;
 }
@@ -185,7 +186,6 @@ img {
 
             &[data-dark='dark'] {
                 background: #00cc00;
-
             }
 
             &:disabled {
@@ -193,7 +193,16 @@ img {
                 cursor: auto;
             }
         }
+
+        &--about,&--contact-home,&--topics{
+            transition:all .3s;
+            &[data-dark='dark']{
+                background-color: $dark-bg2;
+            }
+        }
     }
+
+    
 
     &--topics {
         @include mq(pc) {
@@ -207,16 +216,20 @@ img {
 }
 
 .brightness-change {
-    $this :&;
+    $this: &;
+
     width: 150px;
     position: relative;
     margin: 0 auto 25px;
     text-align: center;
-    &__btn{
+
+    &__btn {
         display: none;
-        &:checked + #{$this}__part{
+
+        &:checked + #{$this}__part {
             background-color: #00CC00;
-            &::after{
+
+            &::after {
                 left: 0;
                 transform: translateX(85px);
                 background-color: #eee;
@@ -224,7 +237,7 @@ img {
         }
     }
 
-    &__part{
+    &__part {
         position: relative;
         display: block;
         margin: 0 auto;
@@ -234,7 +247,8 @@ img {
         border-radius: 50px;
         transition: all .3s;
         cursor: pointer;
-        &::after{
+
+        &::after {
             content: "";
             display: block;
             position: absolute;
@@ -249,14 +263,85 @@ img {
         }
     }
 
-    &__text{
+    &__text {
         color: $text-color-sub;
         font-size: 18px;
-        transition:all .3s;
+        transition: all .3s;
         font-weight: bold;
-        &[data-dark='dark']{
-            color:$dark-text-color2;
+
+        &[data-dark='dark'] {
+            color: $dark-text-color2;
         }
+    }
+}
+
+.loading {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    &__text {
+        display: block;
+        text-align: center;
+        color: #fff;
+        font-size: 2rem;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        margin: auto;
+        z-index: 11;
+    }
+}
+ 
+ 
+#loadRatioArea{
+    font-size: 3rem;
+    margin: 0 0.3em;
+}
+ 
+.loadingNone {
+    animation: loadingAnime 1s forwards;
+    &::after{
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        display: block;
+        width: 200px;
+        height: 200px;
+        background: #fff;
+        border-radius: 50%;
+        opacity: .2;
+        animation: loadingShadow 1s forwards;
+    }
+}
+ 
+@keyframes loadingAnime {
+    0% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes loadingShadow{
+    0%{
+        opacity: .5;
+        scale: 0;
+    }
+    100%{
+        opacity: 0;
+        transform: translateX(-50%) translateY(-50%) scale(4);
     }
 }
 
@@ -446,11 +531,20 @@ img {
 
     @include mq(pc) {
         background: linear-gradient(to right, $bg1 0%, $bg1 50%, $bg3 50%, $bg3 100%);
+        transition: all .3s;
+
+        &[data-dark='dark'] {
+            background: linear-gradient(to right, $dark-bg2 0%, $dark-bg2 50%, $dark-bg 50%, $dark-bg 100%);
+        }
     }
 
 
     @include mq(tab) {
         background: linear-gradient(to right, $bg1 0%, $bg1 26.8%, $bg3 26.8%, $bg3 100%);
+
+        &[data-dark='dark'] {
+            background: linear-gradient(to right, $dark-bg2 0%, $dark-bg2 26.8%, $dark-bg 26.8%, $dark-bg 100%);
+        }
     }
 }
 
@@ -572,6 +666,21 @@ img {
         margin-top: 80px;
         padding: 110px 10px 110px 0;
         background: url(../img/about-pc.png);
+        transition:all .3s;
+        &[data-dark='dark']{
+            position: relative;
+            &::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: inherit;
+            height: inherit;
+            background:  rgba(0, 0, 0, 0.2);
+            }
+        }
     }
 
 
@@ -604,7 +713,8 @@ img {
 
 .about-body {
     background-color: $about-bg;
-
+    position: relative;
+    z-index: 1;
     @include mq(pc) {
         max-width: 590px;
         padding: 50px 30px;
@@ -622,6 +732,10 @@ img {
         padding: 50px 15px 50px 30px;
     }
 
+    transition:all .3s;
+    &[data-dark='dark']{
+        background-color: $dark-bg;
+    }
 
     &__ttl {
         font-weight: bold;
@@ -629,6 +743,10 @@ img {
         letter-spacing: 0.068em;
         font-size: 30px;
         line-height: 1.2;
+        transition:all .3s;
+        &[data-dark='dark']{
+            color: $dark-text-color1;
+        }
     }
 
     &__text {
@@ -651,6 +769,10 @@ img {
             font-size: 12px;
             min-height: 211px;
         }
+        transition:all .3s;
+        &[data-dark='dark']{
+            color:$dark-text-color2;
+        }
     }
 }
 
@@ -659,6 +781,10 @@ img {
 ================================================*/
 .company-content {
     background-color: $bg2;
+    transition:all .3s;
+    &[data-dark='dark']{
+        background-color: $dark-bg2;
+    }
 }
 
 .company-content-inner {
@@ -725,6 +851,10 @@ img {
         font-size: 14.6px;
         line-height: 1;
         margin-top: 27px;
+        transition:all .3s;
+        &[data-dark='dark']{
+            color:$dark-text-color2;
+        }
     }
 }
 
@@ -734,7 +864,7 @@ img {
 .culture {
     max-width: 520px;
     width: 100%;
-
+    
     @include mq(pc) {
         margin-top: 80px;
     }
@@ -779,6 +909,9 @@ img {
         font-size: 14.6px;
         line-height: 1;
         margin-top: 27px;
+        &[data-dark='dark']{
+            color:$dark-text-color2;
+        }
     }
 }
 
@@ -814,6 +947,11 @@ img {
 
         @include mq(sm) {
             font-size: 12px;
+        }
+
+        transition:all .3s;
+        &[data-dark='dark']{
+            color:$dark-text-color1;
         }
     }
 }
@@ -898,6 +1036,7 @@ img {
         background: linear-gradient(to right, $bg1 0%, $bg1 50%, $bg3 50%, $bg3 100%);
         height: 464px;
         transition: all .3s;
+
         &[data-dark='dark'] {
             background: linear-gradient(to right, $dark-bg2 0%, $dark-bg2 50%, $dark-bg 50%, $dark-bg 100%);
         }
@@ -923,27 +1062,28 @@ img {
 .top-page-bg {
     position: relative;
 
-    &--about{
+    &--about {
         @include mq(pc) {
-            background: url(../img/about-top-page-big.png) center 45% / cover;
-            
+            background: url(../img/about-top-page-big.png) center top / cover;
         }
+
+
         @include mq(tab) {
-            
-            background: url(../img/about-top-page-sm.png) center 45% / cover;
+            background: url(../img/about-top-page-sm.png) center 0% no-repeat;
         }
     }
-    
-    &--contact{
+
+    &--contact {
         @include mq(pc) {
-            background: url(../img/contact-top-page-big.png) center 45% / cover;
-            
+            background: url(../img/contact-top-page-big.png) center (45% / cover);
         }
+
+
         @include mq(tab) {
-            
             background: url(../img/contact-top-page-sm.png) center 45%;
         }
     }
+
     @include mq(pc) {
         max-width: 1100px;
         height: 387px;
@@ -980,45 +1120,44 @@ img {
     position: absolute;
     color: $text-color-sub;
 
-    &--about{
+    &--about {
         @include mq(pc) {
             top: 156px;
             right: 170px;
         }
-    
-    
+
+
         @include mq(tab) {
             top: 220px;
             right: 98px;
             margin-left: 10px;
         }
-    
-    
+
+
         @include mq(sm) {
             top: 149px;
             right: 29px;
         }
     }
 
-    &--contact{
+    &--contact {
         @include mq(pc) {
             top: 156px;
             right: 150px;
         }
-    
-    
+
+
         @include mq(tab) {
             top: 132px;
             right: 50px;
             margin-left: 10px;
         }
-    
-    
+
+
         @include mq(sm) {
             top: 129px;
             right: 21px;
         }
-        
     }
 
     &__en-ttl {
@@ -1071,6 +1210,10 @@ img {
         font-size: 14px;
         margin-top: 32px;
         line-height: 2;
+        transition:all .3s;
+        &[data-dark='dark']{
+            color:$dark-text-color2;
+        }
     }
 }
 
@@ -1107,7 +1250,6 @@ img {
     top: -10px;
 
     @include mq(pc) {
-        // left: 170px;
         max-width: 420px;
         height: 282px;
     }
@@ -1153,6 +1295,10 @@ img {
         padding: 126px 29px 80px 28px;
     }
 
+    transition:all .3s;
+    &[data-dark='dark']{
+        background-color: $dark-bg2;
+    }
 
     &__text {
         margin-top: 30px;
@@ -1170,9 +1316,12 @@ img {
         @include mq(sm) {
             font-size: 14px;
             line-height: 2;
-
-            // display: inline-block;
             height: 525px;
+        }
+
+        transition:all .3s;
+        &[data-dark='dark']{
+            color:$dark-text-color2;
         }
     }
 }
@@ -1249,6 +1398,10 @@ img {
         @include mq(sm) {
             font-size: 14px;
         }
+        transition:all .3s;
+        &[data-dark='dark']{
+            color:$dark-text-color2;
+        }
     }
 }
 
@@ -1279,6 +1432,24 @@ img {
         width: 100%;
         height: 100%;
     }
+    &::after{
+        content: "";
+        background-color: transparent;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: inherit;
+        height: inherit;
+        transition:all .3s;
+        pointer-events: none;
+    }
+    &[data-dark='dark']{
+        &::after{
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }   
 }
 
 /*===============================================

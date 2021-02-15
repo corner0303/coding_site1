@@ -15,7 +15,7 @@
   <!-- サムネイル設定 -->
   <meta name=”thumbnail” content=”” />
   <!-- ファビコン -->
-  <link rel="shortcut icon" href="./img/favicon.jpg">
+  <!-- <link rel="shortcut icon" href="./img/favicon.jpg"> -->
   <!-- OGP -->
   <meta property="og:url" content="ページのURL">
   <meta property="og:type" content="ページの種類">
@@ -65,6 +65,9 @@
 </head>
 
 <body>
+  <div id="loading" class="loading">
+    <p class="loading__text"><span id="loadRatioArea"></span>%&nbsp;<br>読み込み完了</p>
+  </div>
   <div class="wrapper">
     <div class="hamburger-bg" id="hamburger-bg"></div>
     <!-- /.hamburger-bg -->
@@ -161,7 +164,7 @@
             <br>DIGSMILEの社名にはそんな想いが込められています。</p>
           <!-- /.about-body__text -->
           <div class="btn">
-            <a href="" class="btn__link">READ MORE</a> <!-- /.btn__link -->
+            <a href="" class="btn__link btn__link--about">READ MORE</a> <!-- /.btn__link -->
           </div>
           <!-- /.link-btn -->
         </div>
@@ -233,7 +236,7 @@
           </article>
           <!-- /.topics-item -->
           <div class="btn btn--topics">
-            <a href="" class="btn__link">READ MORE</a>
+            <a href="" class="btn__link btn__link--topics">READ MORE</a>
           </div>
         </div>
         <!-- /.topics-body -->
@@ -250,8 +253,8 @@
             <p class="contact-home-body__text">制作の依頼、取材の依頼、IRや採用についての連絡・お問い合わせはコンタクトページから承っております。
               <br> まずはお気軽にご連絡ください。担当者から改めて返信いたします。</p>
 
-            <div class="btn">
-              <a href="" class="btn__link">READ MORE</a>
+            <div class="btn btn--contact-home">
+              <a href="" class="btn__link btn__link--contact-home">READ MORE</a>
             </div>
           </div>
           <!-- /.contact-home-body -->
@@ -277,8 +280,9 @@
   </script>
   <script src="./js/slick.js"></script>
   <script src="./js/slick.min.js"></script>
-  <script src="./js/script.js"></script>
   <script src="./js/dark.js"></script>
+  <script src="./js/loading.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 
 </html>
