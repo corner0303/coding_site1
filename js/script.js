@@ -133,23 +133,14 @@ $(function () {
 
 })
 
-$(function() {
-	Array.prototype.remove = function(element) {
-	  for (var i = 0; i < this.length; i++)
-	    if (this[i] == element) this.splice(i,1); 
-	};
 
-	function preload(images, progress) {
-		var total = images.length;
-	    $(images).each(function(){
-			var src = this;
-	        $('<img/>')
-				.attr('src', src)
-				.load(function() {
-					images.remove(src);
-					progress(total, total - images.length);
-				});
-	    });
-	}
-	
-})
+window.onload = function() {
+  document.getElementById("loading_text").innerText = "COMPLETED";
+  $("#loader-bg").fadeOut();
+  document.querySelector('body').style.overflow = "scroll"
+  
+  setTimeout(() => {
+    $("#loader-bg").fadeOut();
+    document.querySelector('body').style.overflow = "scroll"
+  },10000)
+}

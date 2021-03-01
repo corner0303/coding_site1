@@ -52,7 +52,7 @@ $dark-bg2: #525252;
 $dark-form-color: #D0D0D0;
 
 /*===============================================
-# comonn -全体に共通するスタイル
+# common -全体に共通するスタイル
 =================================================*/
 
 @include mq("sm") {
@@ -85,15 +85,12 @@ $dark-form-color: #D0D0D0;
         display: none;
     }
 }
-
-
+    
 body {
     font-size: 16px;
     color: $text-color-main;
     font-family: $ja-font1;
     line-height: 1.6875;
-    transition: all .3s;
-
     &[data-dark='dark'] {
         background: $dark-bg;
         color: $text-color-sub;
@@ -181,8 +178,6 @@ img {
         &--form {
             font-family: $ja-font1;
             font-weight: bold;
-            transition: all .3s;
-            transition: all .3s;
 
             &[data-dark='dark'] {
                 background: #00cc00;
@@ -194,15 +189,12 @@ img {
             }
         }
 
-        &--about,&--contact-home,&--topics{
-            transition:all .3s;
-            &[data-dark='dark']{
+        &--about, &--contact-home, &--topics {
+            &[data-dark='dark'] {
                 background-color: $dark-bg2;
             }
         }
     }
-
-    
 
     &--topics {
         @include mq(pc) {
@@ -245,7 +237,6 @@ img {
         height: 40px;
         background: $dark-bg2;
         border-radius: 50px;
-        transition: all .3s;
         cursor: pointer;
 
         &::after {
@@ -266,7 +257,6 @@ img {
     &__text {
         color: $text-color-sub;
         font-size: 18px;
-        transition: all .3s;
         font-weight: bold;
 
         &[data-dark='dark'] {
@@ -275,7 +265,104 @@ img {
     }
 }
 
+// @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
+.loading {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: inherit;
+    height: inherit;
+    background-color: $bg1;
+    z-index: 9999;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: $dark-bg;
+    }
+}
+
+.loading-panel-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loading-panel {
+    display: table;
+    width: 200px;
+    height: 80px;
+    padding: 0px 30px;
+    // background-color: #ddd;
+    border-radius: 10px;
+    background-color: hsl(120, 100%, 31%);
+        -webkit-box-shadow: inset 0px 2px 0px 0px hsl(120, 100%, 29%), 0px 1px 1px hsla(120, 100%, 25%,.3%);
+        -moz-box-shadow: inset 0px 2px 0px 0px hsl(120, 100%, 29%), 0px 1px 1px hsla(120, 100%, 25%,.3%);
+        box-shadow: inset 0px 2px 0px 0px hsl(120, 100%, 29%), 0px 1px 1px hsla(120, 100%, 25%,.3%);
+    animation: 2s bounce ease infinite;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: hsl(120, 100%, 31%);
+        -webkit-box-shadow: inset 0px 2px 0px 0px hsl(120, 100%, 25%), 0px 1px 1px hsla(120, 100%, 25%,.3%);
+        -moz-box-shadow: inset 0px 2px 0px 0px hsl(120, 100%, 25%), 0px 1px 1px hsla(120, 100%, 25%,.3%);
+        box-shadow: inset 0px 2px 0px 0px hsl(120, 100%, 25%), 0px 1px 1px hsla(120, 100%, 25%,.3%);
+    }
+
+    &__item {
+        display: table-cell;
+        vertical-align: middle;
+
+        &--part {
+            color: $text-color-sub;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: $eng-font;
+            font-weight: bold;
+            letter-spacing:.3em;
+            @media (prefers-color-scheme: dark){
+             color: $dark-text-color2;   
+            }
+        }
+    }
+}
+
+.shadow {
+    position: absolute;
+    width: 175px;
+    height: 20px;
+    bottom: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: hsl(120, 100%, 40%);
+    opacity: 0.2;
+    transform-origin: -50% -50%;
+    animation: 2s pulsate ease infinite;
+    z-index: 9000;
+}
+
+@keyframes bounce {
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulsate {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(0.5);
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
 
 /*===============================================
 # index.html
@@ -463,7 +550,6 @@ img {
 
     @include mq(pc) {
         background: linear-gradient(to right, $bg1 0%, $bg1 50%, $bg3 50%, $bg3 100%);
-        transition: all .3s;
 
         &[data-dark='dark'] {
             background: linear-gradient(to right, $dark-bg2 0%, $dark-bg2 50%, $dark-bg 50%, $dark-bg 100%);
@@ -598,19 +684,20 @@ img {
         margin-top: 80px;
         padding: 110px 10px 110px 0;
         background: url(../img/about-pc.png);
-        transition:all .3s;
-        &[data-dark='dark']{
+
+        &[data-dark='dark'] {
             position: relative;
-            &::after{
-            content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: inherit;
-            height: inherit;
-            background:  rgba(0, 0, 0, 0.2);
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: inherit;
+                height: inherit;
+                background: rgba(0, 0, 0, 0.2);
             }
         }
     }
@@ -647,6 +734,7 @@ img {
     background-color: $about-bg;
     position: relative;
     z-index: 1;
+
     @include mq(pc) {
         max-width: 590px;
         padding: 50px 30px;
@@ -664,8 +752,10 @@ img {
         padding: 50px 15px 50px 30px;
     }
 
-    transition:all .3s;
-    &[data-dark='dark']{
+
+    transition: all .3s;
+
+    &[data-dark='dark'] {
         background-color: $dark-bg;
     }
 
@@ -675,8 +765,8 @@ img {
         letter-spacing: 0.068em;
         font-size: 30px;
         line-height: 1.2;
-        transition:all .3s;
-        &[data-dark='dark']{
+
+        &[data-dark='dark'] {
             color: $dark-text-color1;
         }
     }
@@ -701,9 +791,10 @@ img {
             font-size: 12px;
             min-height: 211px;
         }
-        transition:all .3s;
-        &[data-dark='dark']{
-            color:$dark-text-color2;
+
+
+        &[data-dark='dark'] {
+            color: $dark-text-color2;
         }
     }
 }
@@ -713,10 +804,9 @@ img {
 ================================================*/
 .company-content {
     background-color: $bg2;
-    transition:all .3s;
-    &[data-dark='dark']{
-        background-color: $dark-bg2;
-    }
+        &[data-dark='dark'] {
+            background-color: $dark-bg2;
+        }
 }
 
 .company-content-inner {
@@ -783,9 +873,9 @@ img {
         font-size: 14.6px;
         line-height: 1;
         margin-top: 27px;
-        transition:all .3s;
-        &[data-dark='dark']{
-            color:$dark-text-color2;
+
+        &[data-dark='dark'] {
+            color: $dark-text-color2;
         }
     }
 }
@@ -796,7 +886,7 @@ img {
 .culture {
     max-width: 520px;
     width: 100%;
-    
+
     @include mq(pc) {
         margin-top: 80px;
     }
@@ -841,8 +931,9 @@ img {
         font-size: 14.6px;
         line-height: 1;
         margin-top: 27px;
-        &[data-dark='dark']{
-            color:$dark-text-color2;
+
+        &[data-dark='dark'] {
+            color: $dark-text-color2;
         }
     }
 }
@@ -881,9 +972,9 @@ img {
             font-size: 12px;
         }
 
-        transition:all .3s;
-        &[data-dark='dark']{
-            color:$dark-text-color1;
+
+        &[data-dark='dark'] {
+            color: $dark-text-color1;
         }
     }
 }
@@ -967,7 +1058,6 @@ img {
     @include mq(pc) {
         background: linear-gradient(to right, $bg1 0%, $bg1 50%, $bg3 50%, $bg3 100%);
         height: 464px;
-        transition: all .3s;
 
         &[data-dark='dark'] {
             background: linear-gradient(to right, $dark-bg2 0%, $dark-bg2 50%, $dark-bg 50%, $dark-bg 100%);
@@ -978,7 +1068,6 @@ img {
     @include mq(tab) {
         background: linear-gradient(to right, $bg1 0%, $bg1 50%, $bg3 50%, $bg3 100%);
         height: 615px;
-        transition: all .3s;
 
         &[data-dark='dark'] {
             background: linear-gradient(to right, $dark-bg2 0%, $dark-bg2 50%, $dark-bg 50%, $dark-bg 100%);
@@ -996,7 +1085,7 @@ img {
 
     &--about {
         @include mq(pc) {
-            background: url(../img/about-top-page-big.png) center top / cover;
+            background: url(../img/about-top-page-big.png) center (top / cover);
         }
 
 
@@ -1142,9 +1231,9 @@ img {
         font-size: 14px;
         margin-top: 32px;
         line-height: 2;
-        transition:all .3s;
-        &[data-dark='dark']{
-            color:$dark-text-color2;
+
+        &[data-dark='dark'] {
+            color: $dark-text-color2;
         }
     }
 }
@@ -1227,8 +1316,8 @@ img {
         padding: 126px 29px 80px 28px;
     }
 
-    transition:all .3s;
-    &[data-dark='dark']{
+
+    &[data-dark='dark'] {
         background-color: $dark-bg2;
     }
 
@@ -1251,9 +1340,9 @@ img {
             height: 525px;
         }
 
-        transition:all .3s;
-        &[data-dark='dark']{
-            color:$dark-text-color2;
+
+        &[data-dark='dark'] {
+            color: $dark-text-color2;
         }
     }
 }
@@ -1330,9 +1419,10 @@ img {
         @include mq(sm) {
             font-size: 14px;
         }
-        transition:all .3s;
-        &[data-dark='dark']{
-            color:$dark-text-color2;
+
+
+        &[data-dark='dark'] {
+            color: $dark-text-color2;
         }
     }
 }
@@ -1364,7 +1454,8 @@ img {
         width: 100%;
         height: 100%;
     }
-    &::after{
+
+    &::after {
         content: "";
         background-color: transparent;
         position: absolute;
@@ -1374,14 +1465,14 @@ img {
         right: 0;
         width: inherit;
         height: inherit;
-        transition:all .3s;
         pointer-events: none;
     }
-    &[data-dark='dark']{
-        &::after{
+
+    &[data-dark='dark'] {
+        &::after {
             background-color: rgba(0, 0, 0, 0.1);
         }
-    }   
+    }
 }
 
 /*===============================================
@@ -1451,8 +1542,6 @@ img {
         }
 
 
-        transition: all .3s;
-
         &[data-dark='dark'] {
             color: $dark-text-color2;
         }
@@ -1491,7 +1580,6 @@ img {
             font-size: 12px;
             letter-spacing: .004em;
             margin-left: 20px;
-            transition: all .3s;
 
             &[data-dark='dark'] {
                 border: solid 1px $dark-form-color;
@@ -1511,7 +1599,6 @@ img {
         height: 41px;
         border: 1px solid $form-color;
         padding-left: .8em;
-        transition: all .3s;
 
         &[data-dark='dark'] {
             border-color: $dark-form-color;
@@ -1614,7 +1701,6 @@ img {
         border-radius: 50%;
         vertical-align: sub;
         cursor: pointer;
-        transition: all .3s;
 
         &[data-dark='dark'] {
             border-color: $dark-form-color;
@@ -1631,7 +1717,6 @@ img {
         margin: 0 10px;
         display: inline-block;
         cursor: pointer;
-        transition: all .3s;
 
         &[data-dark='dark'] {
             color: $dark-text-color2;
@@ -1648,7 +1733,6 @@ img {
         height: 212px;
         resize: vertical;
         padding: .8em;
-        transition: all .3s;
 
         &[data-dark='dark'] {
             background: $dark-bg2;
@@ -1815,7 +1899,6 @@ img {
         width: 20px;
         height: 20px;
         border: 1px solid $form-color;
-        transition: all .3s;
 
         &::after {
             content: "";
